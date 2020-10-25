@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Nickname has already been taken")
       end
-      it "emialが空では登録できない" do
+      it "emailが空では登録できない" do
         @user.email = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
@@ -75,6 +75,12 @@ RSpec.describe User, type: :model do
       it "passwordが半角英数字を含んでいなければ登録できない" do
         @user.password = "000000"
         @user.password_confirmation = "000000"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      end
+      it "passwordが半角英数字を含んでいなければ登録できない" do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
