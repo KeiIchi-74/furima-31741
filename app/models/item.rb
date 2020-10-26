@@ -12,11 +12,18 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }
   validates :info, presence: true, length: { maximum: 1000 }
   validates :category, :sales_status, :shipping_fee, :prefecture, :scheduled_delivery, presence: true
-  validates :category_id, numericality: { other_than: 1}
-  validates :sales_status_id, numericality: { other_than: 1}
-  validates :shipping_fee_id, numericality: { other_than: 1}
-  validates :prefecture_id, numericality: { other_than: 1}
-  validates :scheduled_delivery_id, numericality: { other_than: 1}
-  validates :price, presence: true, format: { with: /\A\d+\z/ }, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, }
+  with_options numericality: { other_than: 1, message: "Select" } do
+    validates :category_id
+    validates :sales_status_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :scheduled_delivery_id
+  end
+  validates :price, presence: true, format: { with: /\A\d+\z/, message: "Half-width number" }, 
+  numericality: { 
+    greater_than_or_equal_to: 300, 
+    less_than_or_equal_to: 9999999, 
+    message: "Out of setting range" 
+  }
   validates :user_id, presence: true
 end
