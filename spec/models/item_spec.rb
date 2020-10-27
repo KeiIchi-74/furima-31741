@@ -44,22 +44,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category Select")
       end
       it "sales_status_idが1だと保存できない" do
-        @item.sales_status_id = ""
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status Select")
       end
       it "shipping_fee_idが1だと保存できない" do
-        @item.shipping_fee_id = ""
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee Select")
       end
       it "prefecture_idが1だと保存できない" do
-        @item.prefecture_id = ""
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture Select")
       end
       it "scheduled_delivery_idが1だと保存できない" do
-        @item.scheduled_delivery_id = ""
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery Select")
       end
@@ -104,12 +104,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price Half-width number")
       end
       it "priceが300より小さい数値だと保存できない" do
-        @item.price = "299"
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
       it "priceが9999999より大きい数値だと保存できない" do
-        @item.price = "10000000"
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
