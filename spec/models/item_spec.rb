@@ -38,50 +38,25 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Info is too long (maximum is 1000 characters)")
       end
-      it "category_idが空だと保存できない" do
-        @item.category_id = ""
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
-      end
       it "category_idが1だと保存できない" do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category Select")
-      end
-      it "sales_status_idが空だと保存できない" do
-        @item.sales_status_id = ""
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Sales status can't be blank")
       end
       it "sales_status_idが1だと保存できない" do
         @item.sales_status_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status Select")
       end
-      it "shipping_fee_idが空だと保存できない" do
-        @item.shipping_fee_id = ""
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
-      end
       it "shipping_fee_idが1だと保存できない" do
         @item.shipping_fee_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee Select")
       end
-      it "prefecture_idが空だと保存できない" do
-        @item.prefecture_id = ""
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
-      end
       it "prefecture_idが1だと保存できない" do
         @item.prefecture_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture Select")
-      end
-      it "scheduled_delivery_idが空だと保存できない" do
-        @item.scheduled_delivery_id = ""
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
       end
       it "scheduled_delivery_idが1だと保存できない" do
         @item.scheduled_delivery_id = ""
@@ -133,7 +108,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
-      it "priceが9999999より大きい数字だと保存できない" do
+      it "priceが9999999より大きい数値だと保存できない" do
         @item.price = "10000000"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
