@@ -7,7 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: item, local: true) do |f| %>
 
-    <%= render partial: 'shared/error_messages', locals: { item: @item }, model: f.object %>
+    <%= render partial: 'shared/error_messages', locals: { item: item }, model: f.object %>
 
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -130,7 +130,7 @@
       <% else %>
         <%= f.submit "変更する" ,class:"sell-btn" %>
       <% end %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%=link_to 'もどる', item_path(item), class:"back-btn" %>
     </div>
     <% end %>
   </div>
