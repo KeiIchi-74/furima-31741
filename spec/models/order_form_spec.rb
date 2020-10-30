@@ -7,7 +7,7 @@ RSpec.describe OrderForm, type: :model do
 
   describe "購入情報の保存" do
     context "購入情報が保存される時" do
-      it "postal_code、prefecture_id、city、house_number、building_name、phone_numberが存在していれば保存できること" do
+      it "token、postal_code、prefecture_id、city、house_number、building_name、phone_numberが存在していれば保存できること" do
         expect(@order_form).to be_valid
       end
       it "building_nameは空でも保存できること" do
@@ -17,6 +17,11 @@ RSpec.describe OrderForm, type: :model do
     end
 
     context "購入情報が保存されない時" do
+      it "tokenが空だと保存できないこと" do
+        @order_form.token = ""
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Token can't be blank")
+      end
       it "postal_codeが空だと保存できないこと" do
         @order_form.postal_code = ""
         @order_form.valid?
