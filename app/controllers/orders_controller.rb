@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_item, only: [:index, :create]
-  before_action :move_to_top, only: [:index, :create]
+  before_action :set_item
+  before_action :move_to_top
   before_action :authenticate_user!
   def index
     @order_form = OrderForm.new
