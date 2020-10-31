@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
   def move_to_top
     if user_signed_in?
       if @item.user_id == current_user.id
-        redirect_to root_path
+        return redirect_to root_path
       end
     end
     
