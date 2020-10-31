@@ -87,6 +87,11 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Phone number can't be blank")
       end
+      it "phone_numberにハイフンがある場合保存できないこと" do
+        @order_form.phone_number = "080-1234-5678"
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Phone number Input only number")
+      end
       it "phone_numberが全角（漢字）だと保存できないこと" do
         @order_form.phone_number = "壱"
         @order_form.valid?
