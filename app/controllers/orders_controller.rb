@@ -47,7 +47,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_top
-    @item = Item.find(params[:item_id])
     if user_signed_in?
       if @item.user_id == current_user.id
         redirect_to root_path
