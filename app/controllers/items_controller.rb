@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :save]
   before_action :move_to_top, only: [:edit, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -62,7 +62,9 @@ class ItemsController < ApplicationController
   def move_to_top
     @item = Item.find(params[:id])
     if user_signed_in?
-      unless @item.user_id == current_user.id
+      if @item.user_id != current_user.id 
+        redirect_to root_path
+      elsif @item.order.present?
         redirect_to root_path
       end
     end
