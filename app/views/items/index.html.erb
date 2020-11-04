@@ -130,19 +130,20 @@
           <% end %>
 
         </div>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= item.name %>
-          </h3>
-          <div class='item-price'>
-            <span><%= item.price %>円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+        <div class="item_info">
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= item.name %>
+            </h3>
+            <div class='item-price'>
+              <span><%= item.price %>円<br>(税込み)</span>
             </div>
           </div>
+          <% end %>
+          <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
+            <%= render partial: "favorites/favorite", locals: {item: item} %>
+          </div>
         </div>
-        <% end %>
       </li>
       <% end %>
 
