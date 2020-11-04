@@ -66,14 +66,18 @@
       </tbody>
     </table>
     <div class="option">
+
       <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <div id="favorites_buttons_<%= @item.id %>">
+          <%= render partial: "favorites/favorite", locals: { item: @item} %>
+        </div>
       </div>
+
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
         <span>不適切な商品の通報</span>
       </div>
+      
     </div>
   </div>
 
