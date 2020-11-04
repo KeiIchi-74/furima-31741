@@ -98,6 +98,10 @@
   font-size: 14px;
 }
 
+.item-user-nickname {
+  font-weight: bold;
+}
+
 .option {
   display: flex;
   justify-content: space-between;
