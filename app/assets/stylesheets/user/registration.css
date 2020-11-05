@@ -27,6 +27,12 @@
   font-weight: bold;
 }
 
+.form-fotter-text {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
 .form-group {
   width: 50%;
   display: flex;
