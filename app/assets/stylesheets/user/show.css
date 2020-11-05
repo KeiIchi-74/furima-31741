@@ -4,6 +4,7 @@
 
 .user-items {
   width: 50%;
+  margin: 0 auto;
 }
 
 .user-favorite-items {
@@ -23,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   padding: 5vh 0;
+  margin: 0 auto;
 }
 
 .user-item-box {

@@ -24,21 +24,25 @@
 <% end %>
 </div>
 
-<div class="user-favorite-items">
-<p class="user-item-index"><%= "#{@user.nickname}のお気に入り商品" %></p>
-<% @favorites.each do |favorite| %>
-  <div class="user-item-show">
-    <div class="user-item-box">
-      <%= link_to item_path(favorite.item), class: "user-item-name"  do %>
-        <h2 class="name">
-          <%= favorite.item.name %>
-        </h2>
-        <div class='item-img-content'>
-          <%= image_tag favorite.item.image ,class:"user-item-box-img" %>
+<% if user_signed_in? %>
+  <% if @user.id == current_user.id %>
+    <div class="user-favorite-items">
+    <p class="user-item-index"><%= "#{@user.nickname}のお気に入り商品" %></p>
+    <% @favorites.each do |favorite| %>
+      <div class="user-item-show">
+        <div class="user-item-box">
+          <%= link_to item_path(favorite.item), class: "user-item-name"  do %>
+            <h2 class="name">
+              <%= favorite.item.name %>
+            </h2>
+            <div class='item-img-content'>
+              <%= image_tag favorite.item.image ,class:"user-item-box-img" %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 </div>
 </div>
