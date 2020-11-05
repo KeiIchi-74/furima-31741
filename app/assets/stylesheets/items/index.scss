@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: #3ccace;
 }
 
 .main {
@@ -275,6 +276,10 @@ a {
   font: bold;
 }
 
+.item_info {
+  display: flex;
+}
+
 
 .item-info {
   background-color: #FFF;
@@ -290,6 +295,7 @@ a {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
+  color: black;
 }
 
 

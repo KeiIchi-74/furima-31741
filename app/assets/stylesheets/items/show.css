@@ -208,3 +208,12 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+#star-on {
+  color: #ffb340;
+}
+
+#star-off {
+  color: #eee;
+}
+
