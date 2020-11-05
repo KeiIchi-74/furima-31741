@@ -1,19 +1,33 @@
+.container {
+  display: flex;
+}
+
+.user-items {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.user-favorite-items {
+  width: 50%;
+}
+
 .nickname {
   font-size: 40px;
   font-weight: bold;
   text-align: center;
 }
 
-.item-show {
+.user-item-show {
   background-color: #f8f8f8;
-  width: 100vw;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5vh 0;
+  margin: 0 auto;
 }
 
-.item-box {
+.user-item-box {
   background-color: #FFF;
   width: 70vw;
   min-width: 1200px;
@@ -23,26 +37,26 @@
   align-items: center;
 }
 
-.item-box>.name {
+.user-item-box>.name {
   text-align: center;
   font-weight: bold;
   font-size: 25px;
 }
 
-.item-box-img {
+.user-item-box-img {
   height: 50vh;
-  width: 60vw;
+  width: 40vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
 }
 
-.item-name {
+.user-item-name {
   text-decoration: none;
   color: black;
 }
 
-.item-index {
+.user-item-index {
   text-align: center;
 }
 
