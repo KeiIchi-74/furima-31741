@@ -112,7 +112,7 @@
 
 .favorite-btn {
   border-radius: 40px;
-  width: 15vw;
+  width: 20vw;
   min-width: 200px;
   color: rgb(249, 75, 0);
   border: 2px solid #ffb340;
@@ -128,19 +128,14 @@
 
 .report-btn {
   border-radius: 40px;
-  width: 15vw;
+  width: 20vw;
   min-width: 200px;
-
-  padding: 1vh 0;
+  padding: 1vh 1vh;
   color: black;
   border: 2px solid #2d2d2d;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.report-flag-icon {
-  margin-right: 5px;
 }
 
 
@@ -217,5 +212,20 @@
 
 #star-off {
   color: #eee;
+}
+
+#flag-on {
+  color: rgb(216, 32, 32);
+  margin-right: 5px;
+}
+
+#flag-off {
+  color: #eee;
+  margin-right: 5px;
+}
+
+span.report {
+  font-size: 13px;
+  display: inline-block;
 }
 
