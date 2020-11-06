@@ -92,14 +92,16 @@
 }
 
 .detail-value {
-  width: 80%;
+  width: 100%;
   padding: 20px;
   border: 1px solid #dedede;
   font-size: 14px;
+  display: flex;
 }
 
 .item-user-nickname {
   font-weight: bold;
+  margin-right: 25px;
 }
 
 .option {

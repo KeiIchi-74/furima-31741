@@ -1,48 +1,54 @@
 <%= render "shared/header" %>
 
-<div class="container">
-<div class="user-items">
-<p class="user-item-index"><%= "#{@user.nickname}の出品商品" %></p>
-<% @items.each do |item| %>
-  <div class="user-item-show">
-    <div class="user-item-box">
-      <%= link_to item_path(item), class: "user-item-name"  do %>
-        <h2 class="name">
-          <%= item.name %>
-        </h2>
-        <div class='item-img-content'>
-          <%= image_tag item.image ,class:"user-item-box-img" %>
-          <% if item.order.present? %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "relationships/follow_num", locals: { user: @user, followings: @followings, followers: @followers } %>
+
+<div id="relationships_buttons_<%= @user.id %>" class="relationship_buttons">
+  <%= render partial: "relationships/relationship", locals: { user: @user} %>
 </div>
 
-<% if user_signed_in? %>
-  <% if @user.id == current_user.id %>
-    <div class="user-favorite-items">
-    <p class="user-item-index"><%= "#{@user.nickname}のお気に入り商品" %></p>
-    <% @favorites.each do |favorite| %>
-      <div class="user-item-show">
-        <div class="user-item-box">
-          <%= link_to item_path(favorite.item), class: "user-item-name"  do %>
-            <h2 class="name">
-              <%= favorite.item.name %>
-            </h2>
-            <div class='item-img-content'>
-              <%= image_tag favorite.item.image ,class:"user-item-box-img" %>
-            </div>
-          <% end %>
-        </div>
+<div class="container">
+  <div class="user-items">
+  <p class="user-item-index"><%= "#{@user.nickname}の出品商品" %></p>
+  <% @items.each do |item| %>
+    <div class="user-item-show">
+      <div class="user-item-box">
+        <%= link_to item_path(item), class: "user-item-name"  do %>
+          <h2 class="name">
+            <%= item.name %>
+          </h2>
+          <div class='item-img-content'>
+            <%= image_tag item.image ,class:"user-item-box-img" %>
+            <% if item.order.present? %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+    </div>
+  <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <% if @user.id == current_user.id %>
+      <div class="user-favorite-items">
+      <p class="user-item-index"><%= "#{@user.nickname}のお気に入り商品" %></p>
+      <% @favorites.each do |favorite| %>
+        <div class="user-item-show">
+          <div class="user-item-box">
+            <%= link_to item_path(favorite.item), class: "user-item-name"  do %>
+              <h2 class="name">
+                <%= favorite.item.name %>
+              </h2>
+              <div class='item-img-content'>
+                <%= image_tag favorite.item.image ,class:"user-item-box-img" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-</div>
+  </div>
 </div>

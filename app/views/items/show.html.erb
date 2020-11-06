@@ -41,7 +41,12 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%=link_to @item.user.nickname, user_path(@item.user.id), class: "item-user-nickname" %></td>
+          <td class="detail-value">
+            <%=link_to @item.user.nickname, user_path(@item.user.id), class: "item-user-nickname" %>
+            <div id="relationships_buttons_<%= @user.id %>" class="relationship_buttons">
+              <%= render partial: "relationships/relationship", locals: { user: @user} %>
+            </div>
+          </td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>

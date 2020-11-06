@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :create]
     resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    resource :relationships, only: [:create, :destroy]
+    get :follow, on: :member
+  end
 end
