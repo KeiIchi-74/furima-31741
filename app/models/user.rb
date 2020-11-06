@@ -1,10 +1,15 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :items
   has_many :orders
   has_many :favorites
   has_many :favorite_items, through: :favorites, source: :item
+
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
@@ -22,6 +27,10 @@ class User < ApplicationRecord
   with_options presence: true, format: { with: /\A[ァ-ン]+\z/, message: "Full-width katakana characters"} do
     validates :last_name_kana
     validates :first_name_kana
+  end
+
+  def followed_by?(user)
+    passive_relationships.find_by(following_id: user.id).present?
   end
 
 end

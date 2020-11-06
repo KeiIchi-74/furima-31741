@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+
+<div class="container-1">
+  <ul class="menu">
+    <li><a href="#" class="active" data-id="followings">フォロー</a></li>
+    <li><a href="#" data-id="followers">フォロワー</a></li>
+  </ul>
+
+  <section class="content active" id="followings">
+    <%= render partial: "following_info", collection: @followings, as: "following" %>
+  </section>
+
+  <section class="content" id="followers">
+    <%= render partial: "follower_info", collection: @followers, as: "follower" %>
+  </section>
+</div>

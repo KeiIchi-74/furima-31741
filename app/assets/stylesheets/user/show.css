@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  margin-top: 50px;
 }
 
 .user-items {
@@ -73,4 +74,80 @@
   color: #FFF;
   font-size: 45px;
   font: bold;
+}
+
+#feather-on {
+  color: rgb(24, 110, 35);
+}
+
+#feather-off {
+  color: #eee;
+}
+
+.relationship_buttons {
+  text-align: center;
+}
+
+.follow {
+  text-align: center;
+}
+
+.container-1 {
+  margin: 30px auto;
+  width: 60%;
+  font-size: 15px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu li a {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 0;
+  width: 150px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px 4px 0 0;
+}
+
+.menu li a.active {
+  color: #3ccace;
+  border-bottom: 4px solid #3ccace;
+} 
+
+.menu li a:not(.active):hover {
+  opacity: 0.5;
+  transition: opacity 0.4s;
+} 
+
+.content.active {
+  background: #fff;
+  color: #333;
+  min-height: 150px;
+  padding: 12px;
+  display: block;
+} 
+
+.content {
+  display: none;
+}
+
+.follow-name {
+  text-align: center;
+}
+
+.following-info-nickname {
+  text-align: center;
+  font-size: 20px;
+}
+
+.follower-info-nickname {
+  text-align: center;
+  font-size: 20px;
 }

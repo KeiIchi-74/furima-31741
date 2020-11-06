@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <% if current_user.id == user.id %>
+    <div class="follow">
+      <%= link_to "フォロー：#{@followings.count}", follow_user_path, class: "followings" %>
+      <%= link_to "フォロワー：#{@followers.count}", follow_user_path, class: "followers" %>
+    </div>
+  <% end %>
+<% end %>
