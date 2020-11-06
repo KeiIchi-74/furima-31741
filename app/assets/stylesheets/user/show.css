@@ -143,11 +143,12 @@
 }
 
 .following-info-nickname {
-  text-align: center;
-  font-size: 20px;
+  margin-left: 43%;
+  font-size: 25px;
 }
 
 .follower-info-nickname {
-  text-align: center;
-  font-size: 20px;
+  margin-left: 43%;
+  font-size: 25px;
 }
+
