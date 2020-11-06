@@ -2,8 +2,13 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_one :order
+
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+
+  has_many :reports, dependent: :destroy
+  has_many :users, through: :reports
+  
   belongs_to_active_hash :category
   belongs_to_active_hash :sales_status
   belongs_to_active_hash :shipping_fee
@@ -35,6 +40,10 @@ class Item < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def reported_by?(user)
+    reports.where(user_id: user.id).exists?
   end
   
 end

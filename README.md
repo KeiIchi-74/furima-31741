@@ -23,6 +23,8 @@
 - has_many :followers, through: :active_relationships, source: :follower
 - has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
 - has_many :followings, through: :passive_relationships, source: :following
+- has_many :reports
+- has_many :report_items, through: :reports, source: :item
 
 ## items テーブル
 
@@ -44,6 +46,8 @@
 - has_one :order
 - has_many :favorites, dependent: :destroy
 - has_many :favorite_users, through: :favorites, source: :user
+- has_many :reports, dependent: :destroy
+- has_many :report_users, through: :reports, source: :user
 
 ## orders テーブル
 
@@ -87,7 +91,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## Relationshipsテーブル
+## relationshipsテーブル
 
 | Column       | Type    | Option |
 | ------------ | ------- | ------ |
@@ -98,3 +102,16 @@
 
 - belongs_to :following, class_name: "User"
 - belongs_to :follower, class_name: "User"
+
+## reportsテーブル
+
+| Column | Type       | Option            |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
