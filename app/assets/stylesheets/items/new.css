@@ -278,7 +278,11 @@
   height: 100%;
   width: calc((100% - 32px) / 5);
   margin-right: 8px;
-  border: 3px solid  #3CCACE
+  border: 3px solid  #3CCACE;
+}
+
+#image_0 {
+  border: 3px solid  #ea352d;
 }
 
 .last {
@@ -317,6 +321,10 @@
   border-right-width: 0;
 }
 
+.image-edit-btn:hover {
+  opacity: 0.7;
+}
+
 .image-delete-btn {
   width: 50%;
   height: 100%;
@@ -328,4 +336,8 @@
   justify-content: center;
   border: 0.5px solid rgb(163, 159, 152);
   border-top-width: 0px;
+}
+
+.image-delete-btn:hover {
+  opacity: 0.7;
 }
