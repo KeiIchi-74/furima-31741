@@ -1,4 +1,4 @@
-if (document.URL.match(/\/items\/\d+\/edit/)){
+if (document.URL.match(/\/items\/\d+\/edit/) || document.URL.match(/\/items\/\d+/) && document.getElementById("item-price") != null){
   document.addEventListener("DOMContentLoaded", () => {
     class Image {
       constructor(num){
