@@ -1,4 +1,4 @@
-if (document.URL.match(/\/items\/\d+\/edit/) || document.URL.match(/\/items\/\d+/) && document.getElementById("item-price") != null){
+if (document.URL.match(/\/items\/\d+\/edit/) || document.URL.match(/\/items\/\d+/)){
   document.addEventListener("DOMContentLoaded", () => {
     class Image {
       constructor(num){
@@ -233,26 +233,29 @@ if (document.URL.match(/\/items\/\d+\/edit/) || document.URL.match(/\/items\/\d+
         if (document.getElementsByClassName("image-prev").length == document.getElementsByClassName("image-prev-container hidden").length) {
           this.submit.classList.add("disabled");
           this.submit.disabled = true;
+          this.submit.value = "画像を添付してください";
         };
       };
 
       removeDisabled() {
         this.submit.disabled = false;
         this.submit.classList.remove("disabled");
+        this.submit.value = "変更する";
       };
 
     };
-
-    const images = document.getElementsByClassName("set-src").length;
-    for(i = 0; i < images; i++) {
-      new Image(i);
-      if (i == images - 1 && i != 4) {
-        new Image(i + 1);
-      }
-      if (i == 4) {
-        document.getElementById("camera").setAttribute("class", "hidden");
-      }
-    };
+    
+    if (document.getElementsByClassName("price-content").length == 3) {
+      const images = document.getElementsByClassName("set-src").length;
+      for(i = 0; i < images; i++) {
+        new Image(i);
+        if (i == images - 1 && i != 4) {
+          new Image(i + 1);
+        } else if (i == 4) {
+          document.getElementById("camera").setAttribute("class", "hidden");
+        };
+      };
+    }
 
   });
 };

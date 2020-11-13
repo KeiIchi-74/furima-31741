@@ -1,4 +1,4 @@
-if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
+if (document.URL.match(/\/items\/new/) || document.URL.match(/items/)){
   document.addEventListener("DOMContentLoaded", () => {
     class Image {
       constructor(num){
@@ -27,9 +27,14 @@ if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
         if (this.num == 4) {
           this.imagePrevContainer.classList.add("last");
         };
-
+        
         if (this.num != 0) {
           this.imagePrevContainerBack = document.getElementById(`image_${this.num - 1}`);
+        };
+
+        this.submit = document.getElementById("submit");
+        if (this.num == 0 && document.getElementById(`image_${this.num + 1}`) == null) {
+          this.setDisabled();
         };
         
         this.imagePrev = document.createElement("div");
@@ -70,11 +75,12 @@ if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
       createImageHTML(blob) {
         this.blobImage.setAttribute("src", blob);
         this.imagePrevContainer.classList.remove("hidden");
+        this.createImageNext();
+        this.removeDisabled();
         if (this.num == 4) {
           this.cameraIcon.setAttribute("class", "hidden");
           return;
         };
-        this.createImageNext();
       };
 
       clickJudgement() {
@@ -131,6 +137,7 @@ if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
         this.imagePrevContainer.classList.add("hidden"); 
         this.setLabel(); 
         this.itemImage.click();
+        this.setDisabled();
       };
 
       imageDelete() {
@@ -139,6 +146,7 @@ if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
         this.blobImage.removeAttribute("class");
         this.cameraIcon.setAttribute("class","fas fa-camera");
         this.imagePrevContainer.classList.add("hidden");
+        this.setDisabled();
         if (this.num == 0){
           this.setLabel()  
         };  
@@ -208,10 +216,30 @@ if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
         };
       };
 
+      setDisabled() {
+        if (document.getElementsByClassName("image-prev").length == document.getElementsByClassName("image-prev-container hidden").length) {
+          this.submit.classList.add("disabled");
+          this.submit.disabled = true;
+          this.submit.value = "画像を添付してください";
+        };
+      };
+
+      removeDisabled() {
+        this.submit.disabled = false;
+        this.submit.classList.remove("disabled");
+        this.submit.value = "出品する";
+      };
+
 
     };
 
-    new Image(0);
+    if (document.getElementsByClassName("price-content").length == 3) {
+      if (document.getElementsByClassName("set-src").length == 0) {
+        new Image(0);
+      };
+    };
+
+    
     
   });
 };

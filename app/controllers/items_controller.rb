@@ -15,10 +15,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_images_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
+      delete_image()
       render :new
     end
   end
@@ -45,20 +46,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
-  def item_images_params
-    params.require(:item).permit(
-      :name, 
-      :info, 
-      :category_id, 
-      :sales_status_id, 
-      :shipping_fee_id, 
-      :prefecture_id, 
-      :scheduled_delivery_id, 
-      :price,
-      images: []
-    ).merge(user_id: current_user.id)
-  end
 
   def item_params
     params.require(:item).permit(
@@ -123,6 +110,12 @@ class ItemsController < ApplicationController
       images_params[:images].each do |image|
         @item.images.attach(image)
       end
+    end
+  end
+
+  def delete_image
+    if images_params[:images].present?
+      Item.new.images.purge
     end
   end
 
