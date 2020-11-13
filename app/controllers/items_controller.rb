@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :save]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :save, :edit_ids, :delete_ids, :set_image]
   before_action :move_to_top, only: [:edit, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :edit_ids, only: :update
   before_action :delete_ids, only: :update
-  before_action :set_item, only: :update
+  before_action :set_image, only: :update
 
   def index
     @items = Item.order("created_at DESC")
@@ -24,7 +24,8 @@ class ItemsController < ApplicationController
   end
 
   def show 
-    @user = @item.user
+    @item = Item.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -89,7 +90,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_top
-    set_item
+    @item = Item.find(params[:id])
     if user_signed_in?
       if @item.user_id != current_user.id 
         redirect_to root_path
@@ -100,9 +101,8 @@ class ItemsController < ApplicationController
   end
 
   def edit_ids
-    set_item
-    if edit_ids_params.present?
-      edit_ids_params.each do |edit_id|
+    if edit_ids_params[:edit_ids].present?
+      edit_ids_params[:edit_ids].each do |edit_id|
         image = @item.images.find(edit_id)
         image.purge
       end
@@ -110,9 +110,8 @@ class ItemsController < ApplicationController
   end
 
   def delete_ids
-    set_item
-    if delete_ids_params.present?
-      delete_ids_params.each do |delete_id|
+    if delete_ids_params[:delete_ids].present?
+      delete_ids_params[:delete_ids].each do |delete_id|
         image = @item.images.find(delete_id)
         image.purge
       end
@@ -120,9 +119,8 @@ class ItemsController < ApplicationController
   end
 
   def set_image
-    set_item
-    if images_params.present?
-      images_params.each do |image|
+    if images_params[:images].present?
+      images_params[:images].each do |image|
         @item.images.attach(image)
       end
     end
