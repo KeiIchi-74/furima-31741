@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      set_image()
       redirect_to root_path
     else
       delete_image()
@@ -26,7 +27,7 @@ class ItemsController < ApplicationController
 
   def show 
     @item = Item.find(params[:id])
-    @user = User.find(params[:id])
+    @user = User.find_by(id: @item.user_id)
   end
 
   def edit
