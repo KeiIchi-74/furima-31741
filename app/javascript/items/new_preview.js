@@ -1,4 +1,4 @@
-if (document.URL.match(/\/items\/new/) || document.URL.match(/items/)){
+if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)){
   document.addEventListener("DOMContentLoaded", () => {
     class Image {
       constructor(num){

@@ -1,4 +1,4 @@
-if (document.URL.match(/new/)) {
+if (document.URL.match(/\/items\/new/) || document.URL.match(/items\z/)) {
   function displayPrice() {
     const priceInput = document.getElementById("item-price");
     priceInput.addEventListener("input", () => {
