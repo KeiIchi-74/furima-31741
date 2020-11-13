@@ -191,6 +191,10 @@
   margin-bottom: 4vh;
 }
 
+.disabled {
+  opacity: 0.2;
+}
+
 .back-btn {
   background: #aaa;
   border: 1px solid #aaa;
@@ -226,4 +230,122 @@
 
 .inc {
   font-size: 13px;
+}
+
+/* 複数画像投稿のための追加 */
+.image-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px -4px 0px;
+}
+
+.image--container {
+  flex: 1 1 0%;
+  height: 150px;
+  margin-top: 8px;
+  padding: 0px 4px;
+}
+
+#image-list {
+  place-content: center;
+  align-items: center;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(204, 204, 204);
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+  position: relative;
+  transition: all 0.5s ease-out 0s;
+}
+
+.fa-camera {
+  fill: rgb(34, 34, 34);
+  height: 24px;
+  margin-bottom: 8px;
+  margin: 0 auto;
+  width: 24px;
+  cursor: pointer;
+}
+
+.introduce {
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 一枚の画像のプレビュー画面 */
+.image-prev-container{
+  height: 100%;
+  width: calc((100% - 32px) / 5);
+  margin-right: 8px;
+  border: 3px solid  #3CCACE;
+}
+
+#image_0 {
+  border: 3px solid  #ea352d;
+}
+
+#image_0.remove-red {
+  border: 3px solid  #3CCACE;
+}
+
+.last {
+  margin-right: 0;
+}
+
+.image-prev {
+  box-sizing: border-box;
+  height: 70%;
+  width: 100%;
+  border-bottom: 0.5px solid rgb(163, 159, 152);
+}
+
+.image-prev>img {
+  height: 100%;
+  width: 100%;
+}
+
+.image-prev-btn {
+  height: 31%;
+  display: flex;
+  box-sizing: content-box;
+}
+
+.image-edit-btn {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+  align-items: center;
+  color: rgb(0, 149, 238);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border: 0.5px solid rgb(163, 159, 152);
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.image-edit-btn:hover {
+  opacity: 0.7;
+}
+
+.image-delete-btn {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+  align-items: center;
+  color: rgb(0, 149, 238);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border: 0.5px solid rgb(163, 159, 152);
+  border-top-width: 0px;
+}
+
+.image-delete-btn:hover {
+  opacity: 0.7;
 }

@@ -14,12 +14,32 @@
         出品画像
         <span class="indispensable">必須</span>
       </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"item-image" %>
+      <div class="introduce">アイコンをクリックして写真をアップロード</div>
+      <p>最大5枚までアップロードできます</p>
+      <% unless @item.images.present? %>
+        <p>(赤枠の写真はトップページで使用されます)</p>
+      <% end %>
+      <div class="image-container">
+        <div class="image--container">
+          <div id="image-list">
+          <% if @item.images.present? %>
+            <% @item.images.each_with_index do |image, i|%>
+              <%= image_tag image, id: i, class: "set-src" %>
+            <% end %>
+          <% end %>
+            <i class="fas fa-camera" id="camera"></i>
+          </div>
+        </div>
       </div>
+      <%= f.file_field :images, id: "item_image_0", name: "item[images][]", class: "hidden" %>
+      <%= f.file_field :images, id: "item_image_1", name: "item[images][]", class: "hidden" %> 
+      <%= f.file_field :images, id: "item_image_2", name: "item[images][]", class: "hidden" %> 
+      <%= f.file_field :images, id: "item_image_3", name: "item[images][]", class: "hidden" %> 
+      <%= f.file_field :images, id: "item_image_4", name: "item[images][]", class: "hidden" %> 
+      <% item.images.each_with_index do |image, i| %>
+        <%= f.check_box :edit_ids, {multiple: true, id: "edit_#{i}", class: "hidden"}, image.id, false %>
+        <%= f.check_box :delete_ids, {multiple: true, id: "delete_#{i}", class: "hidden"}, image.id, false %>
+        <% end %>
     </div>
   
     <div class="new-items">
@@ -126,10 +146,10 @@
     
     <div class="sell-btn-contents">
       <% if item.id == nil %>
-        <%= f.submit "出品する" ,class:"sell-btn" %>
+        <%= f.submit "出品する" ,class:"sell-btn", id: "submit" %>
         <%=link_to 'もどる', root_path, class:"back-btn" %>
       <% else %>
-        <%= f.submit "変更する" ,class:"sell-btn" %>
+        <%= f.submit "変更する" ,class:"sell-btn", id: "submit" %>
         <%=link_to 'もどる', item_path(item), class:"back-btn" %>
       <% end %>
     </div>

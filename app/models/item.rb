@@ -14,9 +14,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_fee
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
-  has_one_attached :image
+  has_many_attached :images, dependent: :destroy
 
-  validates :image, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :info, presence: true, length: { maximum: 1000 }
   with_options numericality: { other_than: 1, message: "Select" } do
