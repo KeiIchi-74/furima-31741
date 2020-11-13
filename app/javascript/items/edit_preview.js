@@ -21,6 +21,8 @@ if (document.URL.match(/\/items\/\d+\/edit/)){
           this.createImage(e);
         });
 
+        this.submit = document.getElementById("submit");
+
         this.editBox = document.getElementById(`edit_${num}`);
 
         this.deleteBox = document.getElementById(`delete_${num}`);
@@ -29,11 +31,12 @@ if (document.URL.match(/\/items\/\d+\/edit/)){
         this.imagePrevContainer.classList.add("image-prev-container");
         if (this.img == null) {
           this.imagePrevContainer.classList.add("hidden");
-        }
-        this.imagePrevContainer.setAttribute("id", `image_${this.num}`);
-        if (this.num == 4) {
+        } else if (this.num == 4) {
           this.imagePrevContainer.classList.add("last");
+        } else if (this.num == 0) {
+          this.imagePrevContainer.classList.add("remove-red");
         };
+        this.imagePrevContainer.setAttribute("id", `image_${this.num}`);
 
         if (this.num != 0) {
           this.imagePrevContainerBack = document.getElementById(`image_${this.num - 1}`);
@@ -87,6 +90,9 @@ if (document.URL.match(/\/items\/\d+\/edit/)){
         this.imagePrevContainer.classList.remove("hidden");
         this.createImageNext();
         this.removeDisabled();
+        if (this.num == 4) {
+          this.imagePrevContainer.classList.add("last");
+        };
       };
 
       clickJudgement() {
@@ -224,31 +230,28 @@ if (document.URL.match(/\/items\/\d+\/edit/)){
       };
 
       setDisabled() {
-        if (document.querySelectorAll("img").length == document.getElementsByClassName("image-prev-container hidden").length) {
-          this.submit = document.getElementById("submit");
+        if (document.getElementsByClassName("image-prev").length == document.getElementsByClassName("image-prev-container hidden").length) {
+          this.submit.classList.add("disabled");
           this.submit.disabled = true;
         };
       };
 
       removeDisabled() {
         this.submit.disabled = false;
+        this.submit.classList.remove("disabled");
       };
 
     };
 
-    const images = document.querySelectorAll("img");
-    images.forEach((image,num) => {
-      new Image(num);
-      if (num == images.length -1 && num != 4) {
-        new Image(num + 1);
+    const images = document.getElementsByClassName("set-src").length;
+    for(i = 0; i < images; i++) {
+      new Image(i);
+      if (i == images - 1 && i != 4) {
+        new Image(i + 1);
       }
-      if (num == 4) {
+      if (i == 4) {
         document.getElementById("camera").setAttribute("class", "hidden");
       }
-    });
-
-    if (document.querySelector("img") == null) {
-      new Image(0);
     };
 
   });

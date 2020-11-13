@@ -17,7 +17,7 @@
             <%= item.name %>
           </h2>
           <div class='item-img-content'>
-            <%= image_tag item.image ,class:"user-item-box-img" %>
+            <%= image_tag item.images[0] ,class:"user-item-box-img" %>
             <% if item.order.present? %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
@@ -42,7 +42,7 @@
                 <%= favorite.item.name %>
               </h2>
               <div class='item-img-content'>
-                <%= image_tag favorite.item.image ,class:"user-item-box-img" %>
+                <%= image_tag favorite.item.images[0] ,class:"user-item-box-img" %>
               </div>
             <% end %>
           </div>

@@ -191,6 +191,10 @@
   margin-bottom: 4vh;
 }
 
+.disabled {
+  opacity: 0.2;
+}
+
 .back-btn {
   background: #aaa;
   border: 1px solid #aaa;
@@ -283,6 +287,10 @@
 
 #image_0 {
   border: 3px solid  #ea352d;
+}
+
+#image_0.remove-red {
+  border: 3px solid  #3CCACE;
 }
 
 .last {

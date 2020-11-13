@@ -6,7 +6,7 @@
       <%= @item.name %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag @item.image ,class:"item-box-img" %>
+      <%= image_tag @item.images[0] ,class:"item-box-img" %>
       <% if @item.order.present? %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
@@ -24,12 +24,12 @@
 
     <% if user_signed_in? %>
       <% if @item.user_id == current_user.id && @item.order.nil? %>
-        <%= link_to '商品の編集', edit_item_path(@item), method: :get, class: "item-red-btn" %>
+        <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
-        <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
+        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
       <% else %>
         <% unless @item.order.present? %>
-        <%= link_to '購入画面に進む', item_orders_path(@item),class:"item-red-btn", "data-turbolinks": false %>
+        <%= link_to '購入画面に進む', item_orders_path(@item.id),class:"item-red-btn", "data-turbolinks": false %>
         <% end %>
       <% end %>
     <% end %>
@@ -42,7 +42,7 @@
         <tr>
           <th class="detail-item">出品者</th>
           <td class="detail-value">
-            <%=link_to @item.user.nickname, user_path(@item.user.id), class: "item-user-nickname" %>
+            <%=link_to @item.user.nickname, user_path(@item.user_id), class: "item-user-nickname" %>
             <div id="relationships_buttons_<%= @user.id %>" class="relationship_buttons">
               <%= render partial: "relationships/relationship", locals: { user: @user} %>
             </div>
