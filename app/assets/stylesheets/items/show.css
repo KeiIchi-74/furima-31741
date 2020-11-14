@@ -11,7 +11,7 @@
 
 .item-box {
   background-color: #FFF;
-  width: 70vw;
+  width: 80vw;
   min-width: 1200px;
   padding: 10vh 15vw;
   display: flex;
@@ -19,10 +19,15 @@
   align-items: center;
 }
 
+.item-main-box {
+  display: flex;
+}
+
 .item-box>.name {
   text-align: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 45px;
+  margin-bottom: 30px;
 }
 
 .item-box-img {
@@ -35,17 +40,15 @@
 
 .item-price-box {
   margin: 25px 0px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  text-align: center;
 }
 
-.item-price-box>.item-price {
-  font-size: 4vh;
+.item-price-main>.item-price {
+  font-size: 45px;
   font-weight: bold;
 }
 
-.item-price-box>.item-postage {
+.item-price-sub {
   font-size: 16px;
 }
 
@@ -78,13 +81,19 @@
   margin: 40px 0px;
 }
 
+.right-container {
+  margin-left: 15px;
+  height: 540px;
+}
+
 .detail-table {
   margin-bottom: 30px;
   width: 100%;
+  height: 100%;
 }
 
 .detail-item {
-  width: 20%;
+  width: 35%;
   background-color: #eee;
   border: 1px solid #dedede;
   font-size: 14px;
@@ -93,6 +102,7 @@
 
 .detail-value {
   width: 100%;
+  height: 100%;
   padding: 20px;
   border: 1px solid #dedede;
   font-size: 14px;
@@ -108,6 +118,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  margin-top: 60px;
 }
 
 .favorite-btn {
@@ -227,5 +238,99 @@
 span.report {
   font-size: 13px;
   display: inline-block;
+}
+
+/* 詳細ページの複数画像表示 */
+/* 上の画像 */
+.item-photo {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+.owl-carousel {
+  position: relative;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+}
+
+.owl-stage {
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+
+.owl-stage .owl-item {
+  min-height: 1px;
+  float: left;
+  user-select: none;
+}
+
+.owl-carousel .owl-stage {
+  position: relative;
+}
+
+.owl-carousel .owl-item-inner {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding: 0 0 100%;
+}
+
+.owl-carousel img {
+  width: 450px;
+  height: 450px;
+  vertical-align: bottom;
+}
+
+
+/* 下の複数画像 */
+.owl-carousel .owl-nav {
+  display: none;
+}
+
+.owl-nav.disabled .owl-prev {
+  display: none;
+}
+
+.owl-dots {
+  height: 90px;
+  width: 100%;
+  display: flex;
+  background-color: rgb(245, 245, 245);
+} 
+
+.owl-dot {
+  position: relative;
+  overflow: hidden;
+  width: 20%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.owl-dot.active {
+  opacity: 1;
+  cursor: default;
+}
+
+.owl-dot-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0 0 100%;
+}
+
+.owl-dot-inner img {
+  width: 100%;
+  height: 90px;
+  vertical-align: bottom;
+  cursor: pointer;
 }
 
