@@ -5,21 +5,107 @@
     <h2 class="name">
       <%= @item.name %>
     </h2>
-    <div class='item-img-content'>
-      <%= image_tag @item.images[0] ,class:"item-box-img" %>
-      <% if @item.order.present? %>
-      <div class='sold-out'>
-        <span>Sold Out!!</span>
+    <div class="item-main-box">
+      <div class="left-container">
+        <div class='item-img-content'>
+          <div class="item-photo">
+            <div class="owl-carousel">
+              <div class="owl-stage-outer">
+                <div class="owl-stage" style="left: 0px; width: 3240px;">
+                <% @item.images.each do |image| %>
+                  <div class="owl-item" style="width: 450px;">
+                    <div class="owl-item-inner">
+                      <span class="luminous-gallery">
+                      <%= image_tag image, class: "owl-lazy"%>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+              <div class="owl-dots">
+              <% @item.images.each do |image| %>
+                <div class="owl-dot">
+                  <span></span>
+                  <div class="owl-dot-inner">
+                  <%= image_tag image%>
+                  </div>
+                </div>
+              <% end %>
+              </div>
+            </div>
+          </div>
+          <% if @item.order.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <% end %>
+
+      <div class="right-container">
+        <table class="detail-table">
+          <tbody>
+            <tr>
+              <th class="detail-item">出品者</th>
+              <td class="detail-value">
+                <%=link_to @item.user.nickname, user_path(@item.user_id), class: "item-user-nickname" %>
+                <div id="relationships_buttons_<%= @user.id %>" class="relationship_buttons">
+                  <%= render partial: "relationships/relationship", locals: { user: @user} %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th class="detail-item">カテゴリー</th>
+              <td class="detail-value"><%= @item.category.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">商品の状態</th>
+              <td class="detail-value"><%= @item.sales_status.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">配送料の負担</th>
+              <td class="detail-value"><%= @item.shipping_fee.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">発送元の地域</th>
+              <td class="detail-value"><%= @item.prefecture.name %></td>
+            </tr>
+            <tr>
+              <th class="detail-item">発送日の目安</th>
+              <td class="detail-value"><%= @item.scheduled_delivery.name %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+
+    <div class="option">
+      <div class="favorite-btn">
+        <div id="favorites_buttons_<%= @item.id %>">
+          <%= render partial: "favorites/favorite", locals: { item: @item} %>
+        </div>
+      </div>
+
+      <div class="report-btn">
+        <div id="reports_buttons_<%= @item.id %>">
+          <%= render partial: "reports/report", locals: { item: @item} %>
+        </div>
+      </div>
+    </div>
+
     <div class="item-price-box">
-      <span class="item-price">
-        <%= @item.price %>
-      </span>
-      <span class="item-postage">
-        <%= @item.shipping_fee.name %>
-      </span>
+      <div class="item-price-main">
+        <span class="item-price">
+          <%= "¥#{@item.price}" %>
+      </div>
+      <div class="item-price-sub">
+        </span>
+        <span class="item-postage">
+          <%= @item.shipping_fee.name %>
+        </span>
+      </div>
     </div>
 
     <% if user_signed_in? %>
@@ -34,57 +120,6 @@
       <% end %>
     <% end %>
 
-    <div class="item-explain-box">
-      <span><%= @item.info %></span>
-    </div>
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value">
-            <%=link_to @item.user.nickname, user_path(@item.user_id), class: "item-user-nickname" %>
-            <div id="relationships_buttons_<%= @user.id %>" class="relationship_buttons">
-              <%= render partial: "relationships/relationship", locals: { user: @user} %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.sales_status.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.shipping_fee.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.scheduled_delivery.name %></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="option">
-
-      <div class="favorite-btn">
-        <div id="favorites_buttons_<%= @item.id %>">
-          <%= render partial: "favorites/favorite", locals: { item: @item} %>
-        </div>
-      </div>
-
-      <div class="report-btn">
-        <div id="reports_buttons_<%= @item.id %>">
-          <%= render partial: "reports/report", locals: { item: @item} %>
-        </div>
-      </div>
-      
-    </div>
   </div>
 
   <div class="comment-box">
