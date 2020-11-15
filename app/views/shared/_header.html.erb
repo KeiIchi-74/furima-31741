@@ -9,11 +9,22 @@
     </form>
   </div>
   <div class='nav'>
-    <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
-    </ul>
-    <ul class='lists-right'>
+    <div class='lists-left'>
+      <div class="category-tag">
+        <i class="fas fa-list-ul"></i><%= link_to "カテゴリーから探す", categories_path, class: "category-list" %>
+        <div class="category-container">
+          <ul class="category-menu">
+            <% categories.each_with_index do |category, i| %>
+              <% if i != 0 %>
+                <li class="category-dot"><%= link_to category.name, url: "#" %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div><i class="fas fa-tags"></i><%= link_to 'ブランドから探す', "#", class: "brand-list" %></div>
+    </div>
+    <div class='lists-right'>
       <% if user_signed_in? %>
       <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
@@ -21,6 +32,6 @@
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
       <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
       <% end %>
-    </ul>
+    </div>
   </div>
 </header>

@@ -1,4 +1,4 @@
-<%= render "shared/header" %>
+<%= render partial: "shared/header", locals: {categories: @categories} %>
 
 <%= render partial: "relationships/follow_num", locals: { user: @user, followings: @followings, followers: @followers } %>
 
