@@ -1,7 +1,147 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+items = []
+60.times do |i|
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 2,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 3,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 4,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 5,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 6,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 7,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 8,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 9,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 10,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+  item = Item.create(
+    name: "サンプル#{i + 1}",
+    info: "サンプル#{i + 1}",
+    category_id: 11,
+    sales_status_id: 2,
+    shipping_fee_id: 2,
+    prefecture_id: 2,
+    scheduled_delivery_id: 2,
+    price: 450,
+    user_id: 3
+    )
+  
+  items << item
+
+end
+
+Item.import items
+
+
