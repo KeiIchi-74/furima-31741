@@ -16,7 +16,7 @@
           <ul class="category-menu">
             <% categories.each_with_index do |category, i| %>
               <% if i != 0 %>
-                <li class="category-dot"><%= link_to category.name, url: "#" %></li>
+                <li class="category-dot"><%= link_to category.name, category_path(category.id) %></li>
               <% end %>
             <% end %>
           </ul>
