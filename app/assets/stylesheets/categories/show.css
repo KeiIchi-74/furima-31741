@@ -29,8 +29,8 @@
   line-height: 34px;
 }
 
-.fa-angle-right {
-  margin-left: 10px;
+.show-more {
+  margin-right: 15px;
 }
 
 .category-show-name-bottom {
@@ -165,9 +165,8 @@
 }
 
 .backbtn-a,
-.pagebtn-a,
+.page-not-current,
 .nextbtn-a {
-  -webkit-box-align: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
@@ -176,9 +175,25 @@
   display: flex;
   font-size: 14px;
   height: 44px;
-  -webkit-box-pack: center;
   justify-content: center;
   width: 44px;
+}
+
+.pagebtn-a {
+  align-items: center;
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.category-page-container {
+  display: flex;
 }
 
 .category-show-item-pagebtn {
@@ -188,4 +203,5 @@
 .category-show-nextbtn {
   display: flex;
 }
+
 

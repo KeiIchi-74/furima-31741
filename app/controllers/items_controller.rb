@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   before_action :set_categories, except: :index
 
   def index
-    @items = Item.order("created_at DESC")
     @categories = Category.where.not(id: 1)
   end
 

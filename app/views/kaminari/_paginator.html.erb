@@ -1,0 +1,37 @@
+<%# The container tag
+  - available local variables
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+    paginator:     the paginator that renders the pagination tags inside
+-%>
+<%= paginator.render do -%>
+<div class="category-show-btn-container">
+  <div class="category-show-btn-main">
+  <div class="category-show-backbtn">
+    <%= first_page_tag unless current_page.first? %>
+    <%= prev_page_tag unless current_page.first? %>
+  </div>
+  <div class="category-page-container">
+    <% each_page do |page| -%>
+      <% if page.display_tag? -%>
+      <div class="category-show-item-pagebtn">
+        <%= page_tag page %>
+      </div>
+      <% elsif !page.was_truncated? -%>
+      <div class="category-show-item-pagebtn">
+        <%= gap_tag %>
+      </div>
+      <% end -%>
+    <% end -%>
+  </div>
+    <% unless current_page.out_of_range? %>
+    <div class="category-show-nextbtn">
+      <%= next_page_tag unless current_page.last? %>
+      <%= last_page_tag unless current_page.last? %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end -%>

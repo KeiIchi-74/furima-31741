@@ -1,3 +1,4 @@
+<div class="main">
 <div class="category-show-container">
   <div class="category-show-main">
     <div class="category-show-main-header">
@@ -8,7 +9,7 @@
       <% end %>
       <% if params[:id] == nil %>
         <%= link_to category_path(category.id), class: "category-show-more" do %>
-          <span>もっと見る</span><i class="fas fa-angle-right"></i>
+          <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
         <% end %>
       <% end %>
     </div>
@@ -16,37 +17,67 @@
     <div class="category-show-items-container">
       <div class="category-show-items-main">
         <ul class="category-show-items">
-          <% items.each do |item| %>
-            <% if item.category_id == category.id %>
-              <li class="category-show-item">
-                <div class="category-show-item-container">
-                  <%= link_to item_path(item.id) do %>
-                    <figure class="category-show-figure">
-                      <figcaption class="category-show-figcaption">
-                        <span class="category-show-item-info"><%= item.name %></span>
-                        <div class="favorite-item">
-                          <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
-                            <%= render partial: "favorites/favorite_item", locals: {item: item} %>
+          <% if params[:id] != nil %>
+            <% items.each do |item| %>
+              <% if item.category_id == category.id %>
+                <li class="category-show-item">
+                  <div class="category-show-item-container">
+                    <%= link_to item_path(item.id) do %>
+                      <figure class="category-show-figure">
+                        <figcaption class="category-show-figcaption">
+                          <span class="category-show-item-info"><%= item.name %></span>
+                          <div class="favorite-item">
+                            <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
+                              <%= render partial: "favorites/favorite_item", locals: {item: item} %>
+                            </div>
                           </div>
+                        </figcaption>
+                        <div class="category-show-item-thumbnail">
+                          <span class="category-show-item-price">¥<%= item.price %></span>
+                          <% if item.images.present? %>
+                          <%= image_tag item.images[0] %>
+                          <% end %>
                         </div>
-                      </figcaption>
-                      <div class="category-show-item-thumbnail">
-                        <span class="category-show-item-price">¥<%= item.price %></span>
-                        <% if item.images.present? %>
-                        <%= image_tag item.images[0] %>
-                        <% end %>
-                      </div>
-                    </figure>
-                  <% end %>
-                </div>
-              </li>
+                      </figure>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            <% end %>
+            <% else %>
+            <% Item.order("created_at DESC").where(category_id: category.id).limit(10).each do |item| %>
+              <% if item.category_id == category.id %>
+                <li class="category-show-item">
+                  <div class="category-show-item-container">
+                    <%= link_to item_path(item.id) do %>
+                      <figure class="category-show-figure">
+                        <figcaption class="category-show-figcaption">
+                          <span class="category-show-item-info"><%= item.name %></span>
+                          <div class="favorite-item">
+                            <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
+                              <%= render partial: "favorites/favorite_item", locals: {item: item} %>
+                            </div>
+                          </div>
+                        </figcaption>
+                        <div class="category-show-item-thumbnail">
+                          <span class="category-show-item-price">¥<%= item.price %></span>
+                          <% if item.images.present? %>
+                          <%= image_tag item.images[0] %>
+                          <% end %>
+                        </div>
+                      </figure>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
             <% end %>
           <% end %>
         </ul>
       </div>
       <% if params[:id] != nil %>
-        <%= render partial: "categories/category_btn" %>
+        <%= paginate items, window: 2 %> 
       <% end %>
     </div>
   </div>
+</div>
 </div>
