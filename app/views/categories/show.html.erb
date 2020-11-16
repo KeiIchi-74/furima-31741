@@ -1,0 +1,5 @@
+<%= render partial: "shared/header", locals: {categories: @categories} %>
+
+<%= render partial: "categories/category", locals: {items: @items, category: @category} %>
+
+<%= render "shared/footer" %>

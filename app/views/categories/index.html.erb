@@ -1,0 +1,47 @@
+<%= render partial: "shared/header", locals: {categories: @categories} %>
+<div class="categories-body">
+<div class="categories-main-container">
+  <div class="categories-main">
+    <div class="categories-lists-container">
+      <h1 class="categories-index">カテゴリー一覧</h1>
+      <div class="categories-lists">
+        <ul class="categories--lists">
+        <% @categories.each_with_index do |categ, i| %>
+          <% if i != 0 %>
+            <li class="categories-list"><%= link_to categ.name, url: "#", class: "list-name-#{i}" %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+      <div class="category-lists-box">
+      <% @categories.each_with_index do |categ, i| %>
+        <% if i != 0 %>
+          <div class="category-list-box">
+            <h2 class="category-name"><%= categ.name %></h2>
+            <div class="category-info">
+              <a class= "category-info-a" href="#">すべて</a>
+              <div class="category-tops">
+                <h3 class="category-tops-h3">トップス</h3>
+              </div>
+              <div class="category-tops-info">
+                <ul class="category-tops-info-ul">
+                  <li class="category-tops-info-list"><a>アウター</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class='purchase-btn'>
+  <span class='purchase-btn-text'>出品する</span>
+    <%= link_to image_tag('camera.png' , size: '185x50' ,class: "purchase-btn-icon"), new_item_path, "data-turbolinks": false %>
+</div>
+
+<%= render "shared/footer" %>

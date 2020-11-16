@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :follow, on: :member
   end
+  resources :categories, only: [:index, :show]
 end

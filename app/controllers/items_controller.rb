@@ -5,9 +5,10 @@ class ItemsController < ApplicationController
   before_action :edit_ids, only: :update
   before_action :delete_ids, only: :update
   before_action :set_image, only: :update
+  before_action :set_categories, except: :index
 
   def index
-    @items = Item.order("created_at DESC")
+    @categories = Category.where.not(id: 1)
   end
 
   def new
@@ -75,6 +76,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
   def move_to_top
