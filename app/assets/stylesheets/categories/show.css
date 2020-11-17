@@ -1,5 +1,14 @@
+body {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
 .category-show-container {
-  max-width: 700px;
+  max-width: 800px;
   padding: 40px 0px;
   margin: 0px auto;
   width: 100%;
@@ -209,4 +218,173 @@
   display: flex;
 }
 
+/* 商品に対するメッセージ機能部分のスタイリング */
+
+.item-detail-message {
+  width: 700px;
+  margin: 8px auto;
+}
+
+.message-content {
+  padding: 24px 7.5%;
+  background: #fff;
+}
+
+.message-box {
+  content: '';
+  display: block;
+  clear: both;
+  
+}
+
+.message-items li {
+  margin: 60px 0 0;
+  display: flex;
+}
+
+.message-user {
+  position: relative;
+  top: -20px;
+  display: block;
+  color: #333;
+  float: left;
+}
+
+.fa-user-circle {
+  width: 100%;
+  vertical-align: middle;
+  height: 100%;
+  font-size: 35px;
+}
+
+.message-user figcaption {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 120px;
+  max-width: 100%;
+  min-width: 214px;
+  height: 1.2em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.message-is-seller {
+  margin: 8px 3px 0 15px;
+  padding: 4px;
+  background: #eef0f4;
+  color: #000;
+  text-align: center;
+  border-radius: 3px;
+  width: 70%;
+}
+
+.message-body {
+  width: 600px;
+  float: right;
+  position: relative;
+  padding: 16px;
+  background: #eef0f4;
+  border-radius: 0 15px 5px 8px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.message-icons {
+  margin: 8px 0 0;
+}
+
+.message-icon-left {
+  display: block;
+  color: #aaa;
+  float: left;
+}
+
+.message-icon-right {
+  cursor: pointer;
+  display: inline-block;
+  color: #aaa;
+  text-decoration: none;
+  float: right;
+}
+
+.message-icon-right form {
+  display: inline;
+}
+
+.message-icon-right button {
+  border: none;
+}
+
+
+.message-body .icon-balloon {
+  position: absolute;
+  top: 8px;
+  left: -9px;
+  color: #eef0f4;
+}
+
+/* アイコン関係のやつ */
+.fas,
+.far {
+  display: inline-block;
+  font-family: 'icon-font';
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.message-icon-right .fa-flag {
+  color: #aaa;
+}
+
+.message-form p {
+  padding: 8px;
+  font-size: 14px;
+  background: #fff6de;
+}
+
+.textarea-default {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.message-form .textarea-default {
+  margin: 8px 0 0;
+}
+
+.message-submit {
+  width: 100%;
+  margin: 8px 0 0;
+  font-size: 0;
+  text-align: center;
+}
+
+.btn-default:disabled {
+  border: 1px solid #888;
+  background: #888;
+  color: #fff;
+}
+
+.message-submit span {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.fa-comment-alt {
+  position: absolute;
+  top: 8px;
+  left: -9px;
+  color: #eef0f4;
+}
 

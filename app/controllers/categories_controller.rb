@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :set_categories
+  before_action :set_categories, only: :show
   def index
+    @categories = Category.where.not(id: 1)
   end
 
   def show
