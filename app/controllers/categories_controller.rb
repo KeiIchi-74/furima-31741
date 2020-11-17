@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @items = Item.order("created_at DESC").page(params[:page]).per(120)
+    @items = Item.order(created_at: :desc).where(category_id: @category.id).page(params[:page]).per(120)
   end
 
   private

@@ -5,10 +5,9 @@ class ItemsController < ApplicationController
   before_action :edit_ids, only: :update
   before_action :delete_ids, only: :update
   before_action :set_image, only: :update
-  before_action :set_categories, except: :index
+  before_action :set_categories
 
   def index
-    @categories = Category.where.not(id: 1)
   end
 
   def new
@@ -27,8 +26,11 @@ class ItemsController < ApplicationController
   end
 
   def show 
-    @item = Item.find(params[:id])
-    @user = User.find_by(id: @item.user_id)
+    item = Item.find(params[:id])
+    @category = Category.find_by(id: item.category_id)
+    @items = Item.order(created_at: :desc).where(user_id: item.user_id).limit(6)
+    @user = User.find_by(id: item.user_id)
+    @category_items = Item.order(created_at: :desc).where(category_id: item.category_id).limit(6)
   end
 
   def edit
@@ -79,7 +81,7 @@ class ItemsController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.where.not(id: 1)
   end
 
   def move_to_top

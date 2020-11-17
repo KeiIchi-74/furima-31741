@@ -136,15 +136,10 @@
       </button>
     </form>
   </div>
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
-  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+ 
 </div>
+
+  <%= render partial: "categories/category_item_show", locals: {category: @category, items: @items, user: @user} %>
+  <%= render partial: "categories/category_item_show", locals: {category: @category, items: @category_items, user: nil} %>
 
 <%= render "shared/footer" %>

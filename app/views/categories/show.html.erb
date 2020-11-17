@@ -1,5 +1,9 @@
 <%= render partial: "shared/header", locals: {categories: @categories} %>
 
+<div id="categories">
 <%= render partial: "categories/category", locals: {items: @items, category: @category} %>
+</div>
+
+<%= render partial: "shared/sell_button" %>
 
 <%= render "shared/footer" %>
