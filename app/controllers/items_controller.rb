@@ -26,12 +26,13 @@ class ItemsController < ApplicationController
   end
 
   def show 
-    item = Item.find(params[:id])
-    @category = Category.find_by(id: item.category_id)
-    @items = Item.order(created_at: :desc).where(user_id: item.user_id).limit(6)
-    @user = User.find_by(id: item.user_id)
-    @category_items = Item.order(created_at: :desc).where(category_id: item.category_id).limit(6)
+    @item = Item.find(params[:id])
+    @category = Category.find_by(id: @item.category_id)
+    @items = Item.order(created_at: :desc).where(user_id: @item.user_id).limit(6)
+    @user = User.find_by(id: @item.user_id)
+    @category_items = Item.order(created_at: :desc).where(category_id: @item.category_id).limit(6)
     @message = Message.new
+    @messages = @item.messages.includes(:user)
   end
 
   def edit

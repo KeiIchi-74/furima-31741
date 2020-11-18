@@ -2,9 +2,14 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @item = Item.find(params[:item_id])
-    @message = @item.messages.new(message_params)
-    @message.save
+    item = Item.find(params[:item_id])
+    message = item.messages.new(message_params)
+    if message.save
+      redirect_to "/items/#{item.id}"
+    else
+      @messages = @item.messages.includes(:user)
+      render "items/show"
+    end
   end
 
   private
