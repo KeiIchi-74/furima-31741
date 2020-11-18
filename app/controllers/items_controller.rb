@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
     @items = Item.order(created_at: :desc).where(user_id: item.user_id).limit(6)
     @user = User.find_by(id: item.user_id)
     @category_items = Item.order(created_at: :desc).where(category_id: item.category_id).limit(6)
+    @message = Message.new
   end
 
   def edit
