@@ -25,6 +25,8 @@
 - has_many :followings, through: :passive_relationships, source: :following
 - has_many :reports
 - has_many :report_items, through: :reports, source: :item
+- has_many :messages
+- has_many :message_items, through: :messages, source: :item
 
 ## items テーブル
 
@@ -48,6 +50,8 @@
 - has_many :favorite_users, through: :favorites, source: :user
 - has_many :reports, dependent: :destroy
 - has_many :report_users, through: :reports, source: :user
+- has_many :messages
+- has_many :message_users, through: :messages, source: :user
 
 ## orders テーブル
 
@@ -109,6 +113,20 @@
 | ------ | ---------- | ----------------- |
 | user   | references | foreign_key: true |
 | item   | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## messagesテーブル
+
+| Column  | Type       | Option            |
+| ------- | ---------- | ----------------- |
+| comment | string     |                   |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 
 ### Association
