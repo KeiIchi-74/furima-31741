@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def show 
-    @item = Item.find(params[:id])
     @category = Category.find_by(id: @item.category_id)
     @items = Item.order(created_at: :desc).where(user_id: @item.user_id).limit(6)
     @user = User.find_by(id: @item.user_id)
