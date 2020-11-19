@@ -7,7 +7,9 @@
     </h1>
 
     <div class='buy-item-info'>
+    <% if @item.images.present? %>
       <%= image_tag @item.images[0], class: 'buy-item-img' %>
+    <% end %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
           <%= @item.name %>

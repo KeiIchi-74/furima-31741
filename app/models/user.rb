@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :reports
   has_many :report_items, through: :reports, source: :item
 
+  has_many :messages
+  has_many :message_items, through: :messages, source: :item
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          

@@ -26,11 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def show 
-    item = Item.find(params[:id])
-    @category = Category.find_by(id: item.category_id)
-    @items = Item.order(created_at: :desc).where(user_id: item.user_id).limit(6)
-    @user = User.find_by(id: item.user_id)
-    @category_items = Item.order(created_at: :desc).where(category_id: item.category_id).limit(6)
+    @category = Category.find_by(id: @item.category_id)
+    @items = Item.order(created_at: :desc).where(user_id: @item.user_id).limit(6)
+    @category_items = Item.order(created_at: :desc).where(category_id: @item.category_id).limit(6)
+    @user = User.find_by(id: @item.user_id)
+    @message = Message.new
+    @messages = @item.messages.includes(:user)
   end
 
   def edit
@@ -81,7 +82,7 @@ class ItemsController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.where.not(id: 1)
+    @categories = Category.all
   end
 
   def move_to_top

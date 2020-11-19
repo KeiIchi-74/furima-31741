@@ -36,8 +36,8 @@
             </div>
           </div>
           <% if @item.order.present? %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
+          <div class="item-sold-out-box sold-out-show-main-box">
+            <span class="item-sold-out-word sold-out-show-main-item">SOLD</span>
           </div>
           <% end %>
         </div>
@@ -119,25 +119,33 @@
         <% end %>
       <% end %>
     <% end %>
-
-  </div>
-
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
-  </div>
- 
+  </div> 
 </div>
+
+<div class="item-detail-message">
+  <div class="message-container">
+    <div class="message-content">
+      <ul class="message-items">
+        <%= render partial: "messages/message", collection: @messages %>
+      </ul>
+    </div>
+    <div class="message-content">
+      <%= form_with model: [@item, @message], local: true, class: "message-form" do |f| %>
+        <p>相手のことを考えて適切なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。</p>
+        <input type="hidden">
+        <input type="hidden">
+        <% unless @item.order.present? %>
+        <%= f.text_area :comment, class: "textarea-default", rows: "6", maxlength: "300" %>
+        <%= f.submit "コメントする", class: "message-submit btn-default" %>
+        <% else %>
+        <%= f.text_area :comment, class: "textarea-default disabled-textarea", rows: "6", maxlength: "300", disabled: true %>
+        <%= f.submit "売り切れのためコメントできません", class: "message-submit btn-default", disabled: true %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
   <%= render partial: "categories/category_item_show", locals: {category: @category, items: @items, user: @user} %>
   <%= render partial: "categories/category_item_show", locals: {category: @category, items: @category_items, user: nil} %>

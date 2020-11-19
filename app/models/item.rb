@@ -16,6 +16,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :scheduled_delivery
   has_many_attached :images, dependent: :destroy
 
+  has_many :messages
+  has_many :message_users, through: :messages, source: :user
+
   validates :name, presence: true, length: { maximum: 40 }
   validates :info, presence: true, length: { maximum: 1000 }
   with_options numericality: { other_than: 1, message: "Select" } do
