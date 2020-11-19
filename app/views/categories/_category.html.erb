@@ -2,12 +2,13 @@
   <div class="category-show-container">
     <div class="category-show-main">
       <div class="category-show-main-header">
-        <% if params[:id] == nil %>
+        <% if params[:id] == nil && category.id != 1 %>
           <h1 class="category-show-name"><%= "#{category.name}の新着商品一覧" %></h1>
-        <% else %>
+        <% end %>
+        <% if params[:id] != nil && category.id != 1 %>
           <h1 class="category-show-name"><%= "#{category.name}の商品一覧" %></h1>
         <% end %>
-        <% if params[:id] == nil %>
+        <% if Item.where(category_id: category.id).limit(11).length == 11 %>
           <%= link_to category_path(category.id), class: "category-show-more" do %>
             <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
           <% end %>
@@ -37,6 +38,11 @@
                             <% if item.images.present? %>
                               <%= image_tag item.images[0] %>
                             <% end %>
+                            <% if item.order.present? %>
+                            <div class="item-sold-out-box">
+                              <span class="item-sold-out-word">SOLD</span>
+                            </div>
+                            <% end %>
                           </div>
                         </figure>
                       <% end %>
@@ -63,6 +69,11 @@
                             <span class="category-show-item-price">¥<%= item.price %></span>
                             <% if item.images.present? %>
                               <%= image_tag item.images[0] %>
+                            <% end %>
+                            <% if item.order.present? %>
+                            <div class="item-sold-out-box">
+                              <span class="item-sold-out-word">SOLD</span>
+                            </div>
                             <% end %>
                           </div>
                         </figure>

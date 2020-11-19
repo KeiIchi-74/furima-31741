@@ -153,6 +153,60 @@ body {
   z-index: 2;
 }
 
+.item-sold-out-box {
+  height: 60px;
+  width: 60px;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  position: absolute!important;
+  border-top: 50px solid #ff0211;
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid #ff0211;
+  border-width: 60px 60px 0 0;
+  content: "";
+  display: block;
+  z-index: 1;
+}
+
+.sold-out-show-box {
+  border-top: 60px solid #ff0211;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #ff0211;
+}
+.sold-out-show-main-box {
+  border-top: 80px solid #ff0211;
+  border-right: 80px solid transparent;
+  border-bottom: 80px solid transparent;
+  border-left: 80px solid #ff0211;
+}
+
+.item-sold-out-word {
+  font-size: 14px;
+  left: 3px;
+  top: -45px;
+  color: #fff;
+  font-weight: 600;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  z-index: 2;
+}
+
+.sold-out-show-item {
+  font-size: 25px;
+  left: -50px;
+  top: -30px;
+}
+
+.sold-out-show-main-item {
+  font-size: 35px;
+  left: -70px;
+  top: -40px;
+}
+
 .category-show-item-thumbnail>img {
   bottom: 0;
   position: absolute;
@@ -254,14 +308,14 @@ body {
   width: 100%;
   vertical-align: middle;
   height: 100%;
-  font-size: 35px;
+  font-size: 50px;
 }
 
 .message-user figcaption {
   overflow: hidden;
   position: absolute;
   top: 0;
-  left: 120px;
+  left: 140px;
   max-width: 100%;
   min-width: 214px;
   height: 1.2em;
@@ -271,7 +325,7 @@ body {
 }
 
 .message-is-seller {
-  margin: 8px 3px 0 15px;
+  margin: 3px 3px 0 18px;
   padding: 4px;
   background: #eef0f4;
   color: #000;
@@ -352,12 +406,16 @@ body {
   display: block;
   width: 100%;
   max-width: 100%;
-  min-height: 104px;
+  min-height: 80px;
   padding: 10px;
   border: 1px solid #ccc;
   background: #fff;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 0.8;
+}
+
+.disabled-textarea {
+  background-color: #ddd;
 }
 
 .message-form .textarea-default {

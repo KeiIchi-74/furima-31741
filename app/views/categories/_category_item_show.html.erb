@@ -3,14 +3,18 @@
     <div class="category-show-main">
       <div class="category-show-main-header">
         <% if user != nil %>
-          <h1 class="category-show-name"><%= "#{user.nickname}の新着商品一覧" %></h1>
-          <%= link_to category_path(category.id), class: "category-show-more" do %>
-            <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
+          <h1 class="category-show-name", style="color: #0099e8;"><%= "#{user.nickname}さんの新着商品一覧" %></h1>
+          <% if user.items.length > 6 %>
+            <%= link_to category_path(category.id), class: "category-show-more" do %>
+              <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
+            <% end %>
           <% end %>
         <% else %>
-          <h1 class="category-show-name"><%= "#{category.name}の商品一覧" %></h1>
-          <%= link_to category_path(category.id), class: "category-show-more" do %>
-            <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
+          <h1 class="category-show-name", style="color: #0099e8;"><%= "#{category.name}の商品一覧" %></h1>
+          <% if Item.where(category_id: category.id).limit(6).length == 6 %>
+            <%= link_to category_path(category.id), class: "category-show-more" do %>
+              <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -20,30 +24,33 @@
           <ul class="category-show-items">
             <% if params[:id] != nil %>
               <% items.each do |item| %>
-                <% if item.category_id == category.id %>
-                  <li class="category-show--item">
-                    <div class="category-show-item-container">
-                      <%= link_to item_path(item.id) do %>
-                        <figure class="category-show-figure">
-                          <figcaption class="category-show-figcaption">
-                            <span class="category-show-item-info"><%= item.name %></span>
-                            <div class="favorite-item">
-                              <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
-                                <%= render partial: "favorites/favorite_item", locals: {item: item} %>
-                              </div>
+                <li class="category-show--item">
+                  <div class="category-show-item-container">
+                    <%= link_to item_path(item.id) do %>
+                      <figure class="category-show-figure">
+                        <figcaption class="category-show-figcaption">
+                          <span class="category-show-item-info"><%= item.name %></span>
+                          <div class="favorite-item">
+                            <div id="favorites_buttons_<%= item.id %>" class="favorites_buttons">
+                              <%= render partial: "favorites/favorite_item", locals: {item: item} %>
                             </div>
-                          </figcaption>
-                          <div class="category-show-item-thumbnail">
-                            <span class="category-show-item-price">¥<%= item.price %></span>
-                            <% if item.images.present? %>
-                              <%= image_tag item.images[0] %>
-                            <% end %>
                           </div>
-                        </figure>
-                      <% end %>
-                    </div>
-                  </li>
-                <% end %>
+                        </figcaption>
+                        <div class="category-show-item-thumbnail">
+                          <span class="category-show-item-price">¥<%= item.price %></span>
+                          <% if item.images.present? %>
+                            <%= image_tag item.images[0] %>
+                          <% end %>
+                          <% if item.order.present? %>
+                          <div class="item-sold-out-box sold-out-show-box">
+                            <span class="item-sold-out-word sold-out-show-item">SOLD</span>
+                          </div>
+                          <% end %>
+                        </div>
+                      </figure>
+                    <% end %>
+                  </div>
+                </li>
               <% end %>
             <% end %>
           </ul>
