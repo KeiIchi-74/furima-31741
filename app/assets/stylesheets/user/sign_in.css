@@ -1,0 +1,26 @@
+.login--btn {
+  margin: 16px 0 0;
+}
+
+.login--container {
+  width: 456px;
+  margin: 0 auto;
+}
+
+#login--p {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.login-to-registration {
+  display: block;
+  margin: 15px auto 4px;
+  border-radius: 4px;
+  border: 1px solid #0099e8;
+  background: #0099e8;
+  color: #fff;
+  line-height: 40px;
+  font-size: 14px;
+  width: 88%;
+}
+

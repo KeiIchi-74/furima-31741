@@ -27,6 +27,7 @@
 - has_many :report_items, through: :reports, source: :item
 - has_many :messages
 - has_many :message_items, through: :messages, source: :item
+- has_many :sns_credentials
 
 ## items テーブル
 
@@ -132,4 +133,17 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :item
+- belongs_to :
+
+## sns_credentialsテーブル
+
+| Column   | Type       | Option            |
+| -------- | ---------- | ----------------- |
+| provider | string     |                   |
+| uid      | string     |                   |
+| user     | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user

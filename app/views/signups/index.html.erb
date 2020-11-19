@@ -1,0 +1,34 @@
+<%= render "shared/second-header"%>
+
+<main class="single-main">
+  <section class="l-single-container">
+    <h2 class="l-single-head registration">新規会員登録</h2>
+    <div class="l-single-inner registration-form">
+      <div class="l-single-content">
+        <%= link_to new_user_registration_path, class: "btn-default-sns btn-mail" do %>
+        <i class="far fa-envelope"></i>
+        メールアドレスで登録する
+        <% end %>
+        <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-default-sns btn-sns btn-sns-google" do %>
+        <img src="https://img.icons8.com/color/96/000000/google-logo.png" class="google-img">
+        Googleで登録する
+        <% end %>
+        <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn-default-sns btn-sns btn-sns-facebook" do %>
+        <i class="fab fa-facebook-square"></i>
+        Facebookで登録する
+        <% end %>
+        <div class="form-group">
+          <p class="form-info-text">
+            登録することで
+            <a href="#" target="_blank">利用規約</a>
+            と
+            <a href="#" target="_blank">プライバシーポリシー</a>
+            に同意したものとみなされます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%= render "shared/second-footer"%>
