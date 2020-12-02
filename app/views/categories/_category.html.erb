@@ -8,7 +8,7 @@
         <% if params[:id] != nil && category.id != 1 %>
           <h1 class="category-show-name"><%= "#{category.name}の商品一覧" %></h1>
         <% end %>
-        <% if Item.where(category_id: category.id).limit(11).length == 11 %>
+        <% if Item.where(category_id: category.id).limit(11).length == 11 && params[:action] != "show" %>
           <%= link_to category_path(category.id), class: "category-show-more" do %>
             <span class="show-more">もっと見る</span><i class="fas fa-angle-right"></i>
           <% end %>
