@@ -88,8 +88,20 @@
   text-align: center;
 }
 
+.relation_user_show {
+  margin-top: 15px;
+}
+
 .follow {
   text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 15px;
+  background: #f8f8f8;
+}
+
+.followings {
+  margin-right: 15px;
 }
 
 .container-1 {
