@@ -7,11 +7,11 @@
       <div class="l-single-content">
         <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn-default-sns btn-sns btn-sns-google" do %>
         <img src="https://img.icons8.com/color/96/000000/google-logo.png" class="google-img">
-        Googleで登録する
+        Googleでログインする
         <% end %>
         <%= link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn-default-sns btn-sns btn-sns-facebook" do %>
         <i class="fab fa-facebook-square"></i>
-        Facebookで登録する
+        Facebookでログインする
         <% end %>
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
           <div class='login-flash-message'>
